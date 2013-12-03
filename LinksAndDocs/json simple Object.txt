@@ -1,0 +1,14 @@
+{
+    "id": 10,
+    "name": "ahmad",
+    "skills": [
+        {
+            "id": 1,
+            "name": "java"
+        },
+        {
+            "id": 2,
+            "name": "C#"
+        }
+    ]
+}

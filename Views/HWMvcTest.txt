@@ -1,0 +1,104 @@
+<apex:page showHeader="true" standardStylesheets="true" >
+ 
+  <apex:includeScript value="{!URLFOR($Resource.jqueryfiles, 'jquery-1.3.2.min.js')}"/>
+
+     <script type="text/javascript">
+         var $ = jQuery.noConflict();
+ 
+        $(document).ready(function(){
+           
+           $("#searchinput").click(function(){
+           
+           
+               $("#status").html(
+                "Making a Jquery Ajax Request to '{!$Page.HWFrontDispatcher}'");
+ 
+        // Make the Ajax Request
+        $.getJSON("{!$Page.HWFrontDispatcher}", {
+            "core.apexpages.devmode.url" :'1',
+            "action" :"action1",
+            "parameters" : JSON.stringify({q:$('#query').val()})
+        }, function(data) {
+            $("#response").html(JSON.stringify(data));
+        });
+ 
+        $("#status").html("Ajax Request Completed !");
+    
+           
+           });
+            
+    
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+                     $("#searchinput2").click(function(){
+           
+           
+               $("#status").html(
+                "Making a Jquery Ajax Request to '{!$Page.HWFrontDispatcher}'");
+ 
+        // Make the Ajax Request
+        $.getJSON("{!$Page.HWFrontDispatcher}", {
+            "core.apexpages.devmode.url" :'1',
+            "action" :"action2",
+            "parameters" : JSON.stringify({q:$('#query').val()})
+        }, function(data) {
+           // $("#response").html(JSON.stringify(data));
+        });
+ 
+        $("#status").html("Action 2 Ajax Request Completed !");
+    
+           
+           });
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+           
+        });
+     </script>        
+ 
+    <a id="ninjaLink" href="">NINJA ATTACK!</a>
+
+
+
+  <input id="searchinput2" type="button"  value="Action2" />
+   <input id="searchinput3" type="button"  value="Action2" />
+ 
+ 
+    <apex:sectionHeader title="Ajax Client Demo" />
+ 
+    <apex:pageblock >
+            <apex:pageBlockSection title="Query Console">
+                <form id="qform">Query String <input type="text" id="query" />
+                <input id="searchinput" type="button"  value="Search Contacts " /></form>
+            </apex:pageBlocksection>
+ 
+            <apex:pageBlockSection title="Ajax Console">
+                <h1>Status</h1>
+                <pre id="status" style="font-size: 16px" />
+                     
+                <h1> JSON Response </h1>
+                <div id="response" style="font-size: 16px;width: 300px;font-family: monospace; font-stretch: expanded" />
+        </apex:pageBlocksection>
+    </apex:pageblock>
+    
+
+ 
+</apex:page>
